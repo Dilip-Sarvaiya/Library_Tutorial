@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 public class Registration extends AppCompatActivity {
 
+    String pkg=getString(R.string.pkg);
+    String cls=getString(R.string.cls);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +34,7 @@ public class Registration extends AppCompatActivity {
                 Toast.makeText(Registration.this, username.getText().toString(), Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
                 intent.putExtra("username",username.getText().toString());
-                intent.setComponent(new ComponentName("com.dilip_sarvaiya_700.library_tutorial","com.dilip_sarvaiya_700.library_tutorial.MainActivity"));
+                intent.setComponent(new ComponentName(pkg,cls));
                 startActivity(intent);
             }
         });
