@@ -12,9 +12,6 @@ import android.widget.Toast;
 
 public class Registration extends AppCompatActivity {
 
-    String pkg=getString(R.string.pkg);
-    String cls=getString(R.string.cls);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +22,9 @@ public class Registration extends AppCompatActivity {
         username=findViewById(R.id.username);
         email=findViewById(R.id.email);
         password=findViewById(R.id.password);
+
+        final String pkg=getString(R.string.pkg);
+        final String cls=getString(R.string.cls);
 
         Button btncreate;
         btncreate=findViewById(R.id.btn_create);

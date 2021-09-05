@@ -12,9 +12,6 @@ import android.widget.Toast;
 
 public class Forgot_Password extends AppCompatActivity {
 
-    String pkg=getString(R.string.pkg);
-    String cls=getString(R.string.cls);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +19,9 @@ public class Forgot_Password extends AppCompatActivity {
         getSupportActionBar().hide();
 
         final EditText email;
+        final String pkg=getString(R.string.pkg);
+        final String cls=getString(R.string.cls);
+
         email=findViewById(R.id.email);
         Button btnsend;
         btnsend=findViewById(R.id.btnsend);

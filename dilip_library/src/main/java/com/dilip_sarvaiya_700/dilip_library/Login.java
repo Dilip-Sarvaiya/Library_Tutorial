@@ -14,8 +14,6 @@ import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 
-    String pkg=getString(R.string.pkg);
-    String cls=getString(R.string.cls);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +22,9 @@ public class Login extends AppCompatActivity {
         getSupportActionBar().hide();
 
         final EditText username,password;
+
+        final String pkg=getString(R.string.pkg);
+        final String cls=getString(R.string.cls);
 
         TextView create,forgot_password;
         username=findViewById(R.id.username);
