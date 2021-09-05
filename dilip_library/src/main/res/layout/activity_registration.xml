@@ -53,6 +53,7 @@
             android:background="@drawable/round_corner"
             android:hint="Username"
             android:fontFamily="@font/open_sans"
+            android:paddingRight="16dp"
             android:paddingLeft="16dp"
             android:drawableLeft="@drawable/ic_baseline_person_24"
             android:drawableTint="@color/colorPrimaryDark"
@@ -67,6 +68,7 @@
             android:layout_height="45dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/round_corner"
+            android:paddingRight="16dp"
             android:hint="Email"
             android:fontFamily="@font/open_sans"
             android:paddingLeft="16dp"
@@ -93,6 +95,7 @@
             android:paddingRight="16dp"
             android:inputType="textPassword"
 
+
             />
 
         <LinearLayout
@@ -104,6 +107,7 @@
             >
 
             <CheckBox
+                android:id="@+id/terms"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="I read and agree to"

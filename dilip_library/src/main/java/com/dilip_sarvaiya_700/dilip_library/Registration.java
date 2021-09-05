@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.regex.Pattern;
 
 public class Registration extends AppCompatActivity {
 
@@ -27,15 +31,66 @@ public class Registration extends AppCompatActivity {
         final String cls=getString(R.string.cls);
 
         Button btncreate;
+        final CheckBox terms;
         btncreate=findViewById(R.id.btn_create);
+        terms=findViewById(R.id.terms);
+
         btncreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Registration.this, username.getText().toString(), Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-                intent.putExtra("username",username.getText().toString());
-                intent.setComponent(new ComponentName(pkg,cls));
-                startActivity(intent);
+                boolean isUserValid;
+                boolean isEmailValid;
+                boolean isPasswordValid;
+                boolean isTermsAccepted;
+                if(username.getText().toString().equals(""))
+                {
+                    username.setError("Please enter the username");
+                    isUserValid=false;
+                }
+                else
+                {
+                    isUserValid=true;
+                }
+                if(email.getText().toString().equals(""))
+                {
+                    email.setError("Please enter the email");
+                    isEmailValid=false;
+                }
+                else if(!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches())
+                {
+                    email.setError("Please enter proper email");
+                    isEmailValid=false;
+                }
+                else
+                {
+                    isEmailValid=true;
+                }
+                if(password.getText().toString().equals(""))
+                {
+                    password.setError("Please enter the password");
+                    isPasswordValid=false;
+                }
+                else
+                {
+                    isPasswordValid=true;
+                }
+                if(terms.isChecked())
+                {
+                    isTermsAccepted=true;
+                }
+                else
+                {
+                    Toast.makeText(Registration.this, "Please accept the terms & conditions", Toast.LENGTH_SHORT).show();
+                    isTermsAccepted=false;
+                }
+                if(isUserValid && isEmailValid && isPasswordValid && isTermsAccepted) {
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+                    intent.putExtra("username", username.getText().toString());
+                    intent.putExtra("email",email.getText().toString());
+                    intent.putExtra("password", password.getText().toString());
+                    intent.setComponent(new ComponentName(pkg, cls));
+                    startActivity(intent);
+                }
             }
         });
     }

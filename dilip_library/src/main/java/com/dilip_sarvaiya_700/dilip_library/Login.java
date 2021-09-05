@@ -36,11 +36,34 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Login.this, username.getText().toString(), Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(android.content.Intent.ACTION_VIEW);
-                intent.putExtra("username",username.getText().toString());
-                intent.setComponent(new ComponentName(pkg,cls));
-                startActivity(intent);
+                boolean isUserValid;
+                boolean isPasswordValid;
+                if(username.getText().toString().equals(""))
+                {
+                    username.setError("Please enter the username");
+                    isUserValid=false;
+                }
+                else
+                {
+                    isUserValid=true;
+                }
+                if(password.getText().toString().equals(""))
+                {
+                    password.setError("Please enter the password");
+                    isPasswordValid=false;
+                }
+                else
+                {
+                    isPasswordValid=true;
+                }
+                if(isUserValid && isPasswordValid) {
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+                    intent.putExtra("username", username.getText().toString());
+                    intent.putExtra("email","blank");
+                    intent.putExtra("password", password.getText().toString());
+                    intent.setComponent(new ComponentName(pkg, cls));
+                    startActivity(intent);
+                }
             }
         });
         create.setOnClickListener(new View.OnClickListener() {
