@@ -16,22 +16,23 @@ import java.util.regex.Pattern;
 
 public class Registration extends AppCompatActivity {
 
+    EditText username,email,password,conf_password;
+    Button btncreate;
+    CheckBox terms;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         getSupportActionBar().hide();
 
-        final EditText username,email,password;
         username=findViewById(R.id.username);
         email=findViewById(R.id.email);
         password=findViewById(R.id.password);
+        conf_password=findViewById(R.id.conf_password);
 
         final String pkg=getString(R.string.pkg);
         final String cls=getString(R.string.cls);
 
-        Button btncreate;
-        final CheckBox terms;
         btncreate=findViewById(R.id.btn_create);
         terms=findViewById(R.id.terms);
 
@@ -70,9 +71,14 @@ public class Registration extends AppCompatActivity {
                     password.setError("Please enter the password");
                     isPasswordValid=false;
                 }
-                else
+                else if(password.getText().toString().equals(conf_password.getText().toString()))
                 {
                     isPasswordValid=true;
+                }
+                else
+                {
+                    conf_password.setError("Password and Confirm Password does not match");
+                    isPasswordValid=false;
                 }
                 if(terms.isChecked())
                 {
@@ -83,6 +89,7 @@ public class Registration extends AppCompatActivity {
                     Toast.makeText(Registration.this, "Please accept the terms & conditions", Toast.LENGTH_SHORT).show();
                     isTermsAccepted=false;
                 }
+
                 if(isUserValid && isEmailValid && isPasswordValid && isTermsAccepted) {
                     Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
                     intent.putExtra("username", username.getText().toString());

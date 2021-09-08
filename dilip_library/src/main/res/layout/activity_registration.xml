@@ -91,11 +91,24 @@
             android:drawableLeft="@drawable/ic_baseline_lock_24"
             android:drawableTint="@color/colorPrimaryDark"
             android:drawablePadding="15dp"
-            android:drawableRight="@drawable/ic_baseline_remove_red_eye_24"
             android:paddingRight="16dp"
             android:inputType="textPassword"
+            />
 
-
+        <EditText
+            android:id="@+id/conf_password"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_corner"
+            android:hint="Confirm Password"
+            android:fontFamily="@font/open_sans"
+            android:paddingLeft="20dp"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawableTint="@color/colorPrimaryDark"
+            android:drawablePadding="15dp"
+            android:paddingRight="16dp"
+            android:inputType="textPassword"
             />
 
         <LinearLayout
