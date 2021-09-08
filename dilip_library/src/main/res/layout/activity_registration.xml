@@ -140,7 +140,6 @@
                 android:textColor="@color/colorPrimaryDark"
                 />
 
-
         </LinearLayout>
 
         <Button
